@@ -6,7 +6,6 @@ module.exports = app => {
 
     //Create a new boardgame
     router.post("/", upload.single('file'), boardgame.create);
-    router.post("/", boardgame.create);
     
     //Retrieve all boardgames
     router.get("/", boardgame.findAll);
@@ -18,7 +17,7 @@ module.exports = app => {
     router.get("/:id", boardgame.findOne);
 
     //Update a boardgame with id
-    router.put("/:id", boardgame.update);
+    router.put("/:id", upload.single('file'), boardgame.update);
 
     //Delete a boardgame with id
     router.delete("/:id", boardgame.delete);
