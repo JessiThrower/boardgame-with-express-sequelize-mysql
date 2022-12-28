@@ -47,7 +47,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
-    Boardgame.FindByPk(id).then(data => {
+    Boardgame.findByPk(id).then(data => {
         if (data) {
             res.send(data);
         } else {
@@ -104,6 +104,32 @@ exports.delete = (req, res) => {
     }).catch(err => {
         res.status(500).send({
             message: "Could not delete boardgame with id=" + id
+        });
+    });
+};
+
+//Delete all boardgames from the database
+exports.deleteAll = (req, res) => {
+    Boardgame.destroy({ 
+        where: {},
+        truncate: false
+    }).then(nums => {
+        res.send({ message: '${nums} Boardgames were deleted successfully!' });
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error ocurred while removing all boardgames."
+        });
+    });
+};
+
+//Find all boardgames with type = board
+
+exports.findAllBoards = (req, res) => {
+    Boardgame.findAll({ where: { type: "board" } }).then(data => {
+        res.send(data);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error ocurred while retrieving boardgames."
         });
     });
 };

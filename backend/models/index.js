@@ -19,6 +19,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.boardgames = require("./boardgame.model.js")(sequelize, Sequelize);
+db.boardgame = require("./boardgame.model.js")(sequelize, Sequelize);
 
 module.exports = db;

@@ -9,6 +9,9 @@ module.exports = app => {
     //Retrieve all boardgames
     router.get("/", boardgame.findAll);
 
+    //Retrieve all type = board boardgames
+    router.get("/board", boardgame.findAllBoards);
+
     //Retrieve a single boardgame woth id
     router.get("/:id", boardgame.findOne);
 
@@ -17,6 +20,9 @@ module.exports = app => {
 
     //Delete a boardgame with id
     router.delete("/:id", boardgame.delete);
+
+    //Delete all boardgames
+    router.delete("/", boardgame.deleteAll);
 
     app.use('/api/boardgame', router);
 };
