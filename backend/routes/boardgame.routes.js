@@ -1,11 +1,13 @@
 module.exports = app => {
     const boardgame = require("../controllers/boardgame.controller.js");
+    var upload = require('../multer/upload');
 
     var router = require("express").Router();
 
     //Create a new boardgame
+    router.post("/", upload.single('file'), boardgame.create);
     router.post("/", boardgame.create);
-
+    
     //Retrieve all boardgames
     router.get("/", boardgame.findAll);
 

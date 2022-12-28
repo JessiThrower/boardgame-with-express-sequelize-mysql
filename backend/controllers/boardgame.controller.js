@@ -19,7 +19,8 @@ exports.create = (req, res) => {
         company: req.body.company,
         players: req.body.players,
         description: req.body.description,
-        year: req.body.year
+        year: req.body.year,
+        filename: req.file ? req.file.filename : ""
     };
 
     //Save boardgame in the database

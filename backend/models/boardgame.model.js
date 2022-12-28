@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         year: {
             type: Sequelize.INTEGER
+        },
+        filename: {
+            type: Sequelize.STRING
         }
     });
 

@@ -1,6 +1,11 @@
 const express = require("express");
 
+var path = require('path');
+
 const app = express();
+
+//public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 //parse requests of content-type - application/json
 app.use(express.json());
